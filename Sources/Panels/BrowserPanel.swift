@@ -470,7 +470,7 @@ final class BrowserProfileStore: ObservableObject {
 
 enum BrowserLinkOpenSettings {
     static let openTerminalLinksInCmuxBrowserKey = "browserOpenTerminalLinksInCmuxBrowser"
-    static let defaultOpenTerminalLinksInCmuxBrowser: Bool = true
+    static let defaultOpenTerminalLinksInCmuxBrowser: Bool = false // lawmux: upstream true
 
     static let openSidebarPullRequestLinksInCmuxBrowserKey = "browserOpenSidebarPullRequestLinksInCmuxBrowser"
     static let defaultOpenSidebarPullRequestLinksInCmuxBrowser: Bool = true
@@ -579,7 +579,7 @@ enum BrowserLinkOpenSettings {
 enum BrowserAvailabilitySettings {
     static let disabledKey = "browserDisabledOverride"
     static let didChangeNotification = Notification.Name("cmux.browserAvailabilityDidChange")
-    static let defaultDisabled = false
+    static let defaultDisabled = true // lawmux: upstream false
 
     static func isDisabled(defaults: UserDefaults = .standard) -> Bool {
         // An MDM configuration profile (DisableEmbeddedBrowser) wins over
