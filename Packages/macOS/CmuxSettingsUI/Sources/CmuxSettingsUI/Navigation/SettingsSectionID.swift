@@ -12,6 +12,7 @@ import Foundation
 /// the `SettingsSectionID` extension below, and add a view file in
 /// `Sections/`.
 public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Hashable {
+    case lawmux // lawmux: the fork's own page, first in General
     case account
     case app
     /// App appearance, accent color, terminal themes, and browser theme.
@@ -61,6 +62,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
     /// User-facing section title shown in the sidebar.
     public var title: String {
         switch self {
+        case .lawmux: return "lawmux" // lawmux: brand name, not localized
         case .account: return String(localized: "settings.section.account", defaultValue: "Account")
         case .computers: return String(localized: "settings.section.devices", defaultValue: "Devices")
         case .app: return String(localized: "settings.section.app", defaultValue: "App")
@@ -89,6 +91,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
     /// SF Symbol shown alongside the title in the sidebar.
     public var symbolName: String {
         switch self {
+        case .lawmux: return "wrench.and.screwdriver" // lawmux
         case .account: return "person.crop.circle"
         case .computers: return "desktopcomputer"
         case .app: return "gearshape"
@@ -119,6 +122,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
     /// by capability rather than only by title.
     public var searchKeywords: String {
         switch self {
+        case .lawmux: return "lawmux fork default workspace directory folder new workspace デフォルト ワークスペース ディレクトリ フォルダ 新規" // lawmux
         case .account: return "sign in team sync user profile"
         case .computers:
             return String(

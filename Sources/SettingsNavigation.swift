@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum SettingsNavigationTarget: String, CaseIterable, Identifiable {
+    case lawmux // lawmux
     case account
     case app
     case themes
@@ -32,6 +33,8 @@ enum SettingsNavigationTarget: String, CaseIterable, Identifiable {
         switch self {
         case .computers:
             return String(localized: "settings.section.devices", defaultValue: "Devices")
+        case .lawmux:
+            return "lawmux" // lawmux
         case .account:
             return String(localized: "settings.section.account", defaultValue: "Account")
         case .app:
@@ -81,6 +84,8 @@ enum SettingsNavigationTarget: String, CaseIterable, Identifiable {
         switch self {
         case .computers:
             return "desktopcomputer"
+        case .lawmux:
+            return "wrench.and.screwdriver" // lawmux
         case .account:
             return "person.crop.circle"
         case .app:
@@ -130,6 +135,8 @@ enum SettingsNavigationTarget: String, CaseIterable, Identifiable {
         switch self {
         case .computers:
             return String(localized: "settings.devices.keywords", defaultValue: "devices my devices computers macs mac discovery discover discoverable incoming access tailscale pairing remote workspaces")
+        case .lawmux:
+            return "\(title) fork default workspace directory folder" // lawmux
         case .account:
             return "\(title) sign in team sync"
         case .app:
