@@ -31,6 +31,9 @@
 
 ## ブランチ運用
 
+- コミットの author / committer は GitHub の noreply アドレス
+  （`LawrenceTurnerW <46259390+LawrenceTurnerW@users.noreply.github.com>`）。この checkout の
+  `git config user.email` に設定済み。会社メールを公開履歴に残さない。
 - 機能追加・修正は `feature/<name>` ブランチで作業し、push して PR を作る。ユーザーが動作確認
   したあとにマージする（`gh pr merge --merge --delete-branch`）。
 - 積み重ねた PR（base が別の feature ブランチ）は、下の PR をマージする前に
