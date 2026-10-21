@@ -23,7 +23,8 @@
   再起動後にセッション復元で戻ってきてから続きをやる。ログは DerivedData の `lawmux-install.log`。
 - 入れ替えはユーザーに頼まず自分で実行する。専用のワークスペースを CLI で作って、その中で走らせる:
   `cmux workspace create --cwd ~/Work/lawmux --command "./scripts/lawmux-build-release.sh --install --open --detach"`。
-  復元で戻ってきたら、そのワークスペースは `cmux workspace close --workspace <ref> --force` で閉じる。
+  復元で戻ってきたら、そのワークスペースを閉じる。再起動で ref（`workspace:…`）は振り直されるので、
+  `--name "lawmux install"` を付けて作り、`cmux workspace list` のタイトルで探して `cmux workspace close --workspace <ref> --force`。
 - `/Applications/cmux.app`（`com.cmuxterm.app`）は本家のアプリで、ユーザーが使っている。
   絶対に終了・置き換えしない。lawmux（`com.lawrenceturnerw.lawmux`）の終了は作業上必要なら行ってよい。
 - 変更後は `python3 scripts/verify-local.py` を通し、Swift を触ったらビルドまで確認する。
