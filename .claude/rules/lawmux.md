@@ -25,6 +25,9 @@
 
 - 機能追加・修正は `feature/<name>` ブランチで作業し、push して PR を作る。ユーザーが動作確認
   したあとにマージする（`gh pr merge --merge --delete-branch`）。
+- 積み重ねた PR（base が別の feature ブランチ）は、下の PR をマージする前に
+  `gh pr edit <n> --base main` で上の PR のベースを付け替える。付け替えずに `--delete-branch` で
+  マージすると、上の PR は再オープンできない形で自動クローズされる（#5 で発生）。
 - `gh pr create` は必ず `--repo LawrenceTurnerW/lawmux --base main` を付ける。fork なので、
   付け忘れると本家 manaflow-ai/cmux に PR が立ってしまう。保険として `.claude/settings.json` の
   `GH_REPO` が gh の向き先を fork に固定し、ユーザー側のグローバル hook（gh-fork-guard）が
