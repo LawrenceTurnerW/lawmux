@@ -46,4 +46,6 @@
 ## 本家の取り込み
 
 - `./scripts/lawmux-sync-upstream.sh`（Issue「upstream updates pending」が合図）。
+- `upstream` は `main` だけ fetch する（refspec を main に固定済み）。素の `git fetch upstream` を全ブランチで
+  走らせない。本家の main が壊れていてビルドが通らないときは、最小の修正を `// lawmux:` 付きで当てて進める。
 - 本家のタグは写さない。lawmux のタグは `lawmux-vX.Y.Z`。

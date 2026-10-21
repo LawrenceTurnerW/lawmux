@@ -55,5 +55,5 @@ extension CMUXCLI {
         // Chief remains a legacy-routed command until its facade migration.
         names.insert("chief")
         return names
-    }
+    }() // lawmux: upstream c7bd52c28b2 left the closure uncalled; cmux-cli does not compile without this
 }

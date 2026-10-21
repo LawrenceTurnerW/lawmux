@@ -200,6 +200,15 @@ Shift+Space は他のアプリでも lawmux に取られます。
 
 本家から取り込んだ workflow は、同じ Actions が自動で無効にします。
 
+`upstream` リモートは `main` だけを取得する設定にしておきます。本家にはブランチが大量にあり、
+素の `git fetch upstream` が全ブランチを取りに行って長時間かかるためです（同期スクリプト自体は
+`fetch upstream main` しかしません）。
+
+```sh
+git remote add -t main upstream https://github.com/manaflow-ai/cmux.git   # 新規 clone のとき
+git config remote.upstream.fetch "+refs/heads/main:refs/remotes/upstream/main"  # 既存の clone を直すとき
+```
+
 ### タグとバージョン
 
 - 本家の `vX.Y.Z` タグは fork には写しません。同期スクリプトは `main` だけを取り込みます。
