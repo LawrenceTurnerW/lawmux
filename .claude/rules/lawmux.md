@@ -25,6 +25,10 @@
 
 - 機能追加・修正は `feature/<name>` ブランチで作業し、push して PR を作る。ユーザーが動作確認
   したあとにマージする（`gh pr merge --merge --delete-branch`）。
+- `gh pr create` は必ず `--repo LawrenceTurnerW/lawmux --base main` を付ける。fork なので、
+  付け忘れると本家 manaflow-ai/cmux に PR が立ってしまう。保険として `.claude/settings.json` の
+  `GH_REPO` が gh の向き先を fork に固定し、ユーザー側のグローバル hook（gh-fork-guard）が
+  fork checkout での `--repo` なし書き込みコマンドを実行前に拒否する。
 - `main` に直接 push してよいのは、本家の取り込み（`scripts/lawmux-sync-upstream.sh`）と
   ドキュメントの軽微な修正だけ。
 - PR 本文の末尾に `🤖 Generated with [Claude Code](https://claude.com/claude-code)` を付ける。
