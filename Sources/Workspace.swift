@@ -6326,7 +6326,10 @@ final class Workspace: Identifiable, ObservableObject, FilePreviewTabMetadataHos
         if panelId == focusedPanelId {
             let nextSurfaceTabBarDirectory = configTrackingDirectory(for: panelId)
             if surfaceTabBarDirectory != nextSurfaceTabBarDirectory { surfaceTabBarDirectory = nextSurfaceTabBarDirectory }
-            if allowsLocalDirectoryFallback(panelId: panelId), currentDirectory != trimmed { currentDirectory = trimmed }
+            if allowsLocalDirectoryFallback(panelId: panelId), currentDirectory != trimmed {
+                currentDirectory = trimmed
+                lawmuxRefreshAutomaticTitleForDirectoryChange() // lawmux: title follows the git worktree
+            }
         }
         if usesRemoteDirectoryProvenance {
             notifyPresentedCurrentDirectoryChanged(from: previousPresentedDirectory, force: provenanceChanged)
