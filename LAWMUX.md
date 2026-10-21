@@ -27,6 +27,10 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | Default Workspace Path（`app.defaultWorkspacePath`）の意味 | Open Folder ダイアログの初期フォルダのみ | それに加えて、新規ワークスペースの開始ディレクトリ |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
+
+lawmux で既定値を変えた項目は、`cmux config get <key>` の「(default)」表示には反映されません。
+この表示は `web/data/cmux.schema.json` の既定値（本家のまま。BUSL ディレクトリなので lawmux では触らない）を
+出しているためで、アプリの実際の挙動は上の表のとおりです。
 CLI のコマンド名は本家と同じ `cmux` のままです。
 
 本家の設定を引き継ぎたい場合は、最初に一度だけコピーしてください。
