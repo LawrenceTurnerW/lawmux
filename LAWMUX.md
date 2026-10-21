@@ -87,6 +87,18 @@ cd lawmux
 更新するときは `git pull`（または `scripts/lawmux-sync-upstream.sh`）のあと、同じコマンドを
 もう一度実行してください。起動中の lawmux があれば先に終了します。
 
+lawmux 自身のターミナルの中からビルドするときは `--detach` を付けます。
+
+```sh
+./scripts/lawmux-build-release.sh --install --open --detach
+```
+
+ビルドはその場で行い、「lawmux を終了 → 入れ替え → 再起動」だけを端末から切り離した
+プロセスに任せます（終了した瞬間にスクリプト自身が道連れになるのを避けるため）。
+ログは `~/Library/Developer/Xcode/DerivedData/lawmux-release/lawmux-install.log` に残ります。
+再起動後はセッション復元で元のワークスペースが戻り、Claude Code を動かしていたペインは
+`claude --resume` で会話に復帰します（入れ替え直前の応答は途切れます）。
+
 ビルド時間を抑えるため、既定では **この Mac のアーキテクチャだけ**（M シリーズなら arm64）を
 **差分コンパイル**でビルドします。本家の Release は Universal（arm64 + x86_64）かつ
 Whole Module Optimization で、アプリ本体が 2,700 ファイル超の 1 モジュールなので、
