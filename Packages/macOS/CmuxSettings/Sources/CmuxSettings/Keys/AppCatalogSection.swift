@@ -165,7 +165,7 @@ public struct AppCatalogSection: SettingCatalogSection {
     /// ``WorkspaceAutoReorderMode/off`` and ``WorkspaceAutoReorderMode/notifications``.
     public let reorderOnNotification = DefaultsKey<WorkspaceAutoReorderMode>(
         id: "app.reorderOnNotification",
-        defaultValue: .notifications,
+        defaultValue: .off, // lawmux: upstream defaults to .notifications; keep the sidebar order stable
         userDefaultsKey: "workspaceAutoReorderOnNotification"
     )
 
