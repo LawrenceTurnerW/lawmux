@@ -75,7 +75,7 @@ public struct AppCatalogSection: SettingCatalogSection {
 
     public let workspaceInheritWorkingDirectory = DefaultsKey<Bool>(
         id: "app.workspaceInheritWorkingDirectory",
-        defaultValue: true,
+        defaultValue: false, // lawmux: upstream defaults to true; new workspaces start in Ghostty's working-directory (or home)
         userDefaultsKey: "workspaceInheritWorkingDirectory"
     )
 
