@@ -23,9 +23,14 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | サイドバーの最新通知テキスト（`sidebar.showNotificationMessage`） | 既定で表示 | 既定で非表示（設定でオンに戻せる） |
 | 内蔵ブラウザ（`browser.disabled`） | 既定で有効 | 既定で無効（設定で有効に戻せる） |
 | ターミナル内リンクの開き先（`browser.openTerminalLinksInCmuxBrowser`） | 既定で内蔵ブラウザ | 既定で外部ブラウザ |
-| 新規ワークスペースの開始ディレクトリ（`app.workspaceInheritWorkingDirectory`） | 現在のワークスペースの cwd を引き継ぐ | 引き継がない。Ghostty 設定の `working-directory`、未設定ならホーム |
+| 新規ワークスペースの開始ディレクトリ（`app.workspaceInheritWorkingDirectory`） | 現在のワークスペースの cwd を引き継ぐ | 引き継がない。設定 → App → Default Workspace Path（`app.defaultWorkspacePath`）、未設定なら Ghostty の `working-directory`、それもなければホーム |
+| Default Workspace Path（`app.defaultWorkspacePath`）の意味 | Open Folder ダイアログの初期フォルダのみ | それに加えて、新規ワークスペースの開始ディレクトリ |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
+
+lawmux で既定値を変えた項目は、`cmux config get <key>` の「(default)」表示には反映されません。
+この表示は `web/data/cmux.schema.json` の既定値（本家のまま。BUSL ディレクトリなので lawmux では触らない）を
+出しているためで、アプリの実際の挙動は上の表のとおりです。
 CLI のコマンド名は本家と同じ `cmux` のままです。
 
 本家の設定を引き継ぎたい場合は、最初に一度だけコピーしてください。

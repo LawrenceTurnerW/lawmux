@@ -597,7 +597,12 @@ class TabManager: ObservableObject {
         windowTitleWriter: WindowTitleWriter? = nil,
         settings: any SettingsWriting = UserDefaultsSettingsClient(defaults: .standard),
         defaultWorkspaceWorkingDirectoryProvider: @escaping () -> String = {
-            GhosttyWorkingDirectoryResolver(
+            // lawmux: Settings → App → Default Workspace Path wins when it names an
+            // existing folder; otherwise upstream's Ghostty/home resolution applies.
+            if let configured = LawmuxDefaultWorkspacePath.resolvedDirectory() {
+                return configured
+            }
+            return GhosttyWorkingDirectoryResolver(
                 homeDirectory: FileManager.default.homeDirectoryForCurrentUser.path,
                 processWorkingDirectory: FileManager.default.currentDirectoryPath
             ).resolve(
