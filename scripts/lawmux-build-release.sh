@@ -88,6 +88,10 @@ install_app() {
   # the bundle id; the installed app is the only one that should be registered.
   "$LSREGISTER" -u "$APP" >/dev/null 2>&1 || true
   "$LSREGISTER" -f "$DEST" >/dev/null 2>&1 || true
+  # Spotlight indexes the build copy as a second "lawmux" in Launchpad even
+  # with .metadata_never_index in DerivedData, so remove it once installed.
+  # The next build recreates it from the (still cached) intermediates.
+  rm -rf "$APP"
 }
 
 print_result() {
