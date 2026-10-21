@@ -73,7 +73,7 @@ enum SettingsTaxonomyGroup: String, CaseIterable, Identifiable, Sendable {
     var sections: [SettingsSectionID] {
         switch self {
         case .general:
-            return [.account, .app, .themes, .sleepyMode]
+            return [.lawmux, .account, .app, .themes, .sleepyMode] // lawmux: fork page first
         case .terminal:
             return [.terminal, .textBox]
         case .workspace:

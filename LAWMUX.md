@@ -24,13 +24,17 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | 内蔵ブラウザ（`browser.disabled`） | 既定で有効 | 既定で無効（設定で有効に戻せる） |
 | ターミナル内リンクの開き先（`browser.openTerminalLinksInCmuxBrowser`） | 既定で内蔵ブラウザ | 既定で外部ブラウザ |
 | 新規ワークスペースの開始ディレクトリ（`app.workspaceInheritWorkingDirectory`） | 現在のワークスペースの cwd を引き継ぐ | 引き継がない。設定 → App → Default Workspace Path（`app.defaultWorkspacePath`）、未設定なら Ghostty の `working-directory`、それもなければホーム |
-| Default Workspace Path（`app.defaultWorkspacePath`）の意味 | Open Folder ダイアログの初期フォルダのみ | それに加えて、新規ワークスペースの開始ディレクトリ |
+| Default Workspace Path（`app.defaultWorkspacePath`）の意味 | Open Folder ダイアログの初期フォルダのみ。設定画面に項目なし | それに加えて、新規ワークスペースの開始ディレクトリ。設定 → 「一般」グループ先頭の **lawmux** ページで指定できる |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
 
 lawmux で既定値を変えた項目は、`cmux config get <key>` の「(default)」表示には反映されません。
 この表示は `web/data/cmux.schema.json` の既定値（本家のまま。BUSL ディレクトリなので lawmux では触らない）を
 出しているためで、アプリの実際の挙動は上の表のとおりです。
+
+lawmux で追加した設定画面の文言は、本家の文字列カタログ（`Resources/Localizable.xcstrings`）には入れていません
+（カタログは全 9 言語の整合チェックがかかり、本家と衝突しやすいためです）。代わりに lawmux 側の `LawmuxText` で
+表示言語が日本語なら日本語、それ以外は英語を出します。
 CLI のコマンド名は本家と同じ `cmux` のままです。
 
 本家の設定を引き継ぎたい場合は、最初に一度だけコピーしてください。
