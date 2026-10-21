@@ -17,6 +17,10 @@
 - Release ビルドと `/Applications/lawmux.app` への入れ替えは
   `./scripts/lawmux-build-release.sh --install --open`。この fork では素の `xcodebuild`
   （このスクリプト経由）を使ってよい。本家の `reload.sh --launch` はチーム認証が要るので使えない。
+- 自分（Claude）が lawmux の中で動いているときは必ず `--detach` を付ける
+  （`CMUX_BUNDLE_ID` が `com.lawrenceturnerw.lawmux` なら lawmux の中）。lawmux の終了で
+  自分のシェルも落ちるので、終了・入れ替え・再起動は切り離したプロセスに任せ、
+  再起動後にセッション復元で戻ってきてから続きをやる。ログは DerivedData の `lawmux-install.log`。
 - `/Applications/cmux.app`（`com.cmuxterm.app`）は本家のアプリで、ユーザーが使っている。
   絶対に終了・置き換えしない。lawmux（`com.lawrenceturnerw.lawmux`）の終了は作業上必要なら行ってよい。
 - 変更後は `python3 scripts/verify-local.py` を通し、Swift を触ったらビルドまで確認する。
