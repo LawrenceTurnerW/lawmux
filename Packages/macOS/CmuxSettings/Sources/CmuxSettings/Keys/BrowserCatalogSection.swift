@@ -91,7 +91,7 @@ public struct BrowserCatalogSection: SettingCatalogSection {
 
     public let openTerminalLinksInCmuxBrowser = DefaultsKey<Bool>(
         id: "browser.openTerminalLinksInCmuxBrowser",
-        defaultValue: true,
+        defaultValue: false, // lawmux: upstream defaults to true; links open externally
         userDefaultsKey: "browserOpenTerminalLinksInCmuxBrowser"
     )
 
@@ -150,7 +150,7 @@ public struct BrowserCatalogSection: SettingCatalogSection {
     /// "Enable cmux Browser" toggle was a no-op until this was aligned.)
     public let disabled = DefaultsKey<Bool>(
         id: "browser.disabled",
-        defaultValue: false,
+        defaultValue: true, // lawmux: upstream defaults to false; embedded browser off
         userDefaultsKey: "browserDisabledOverride"
     )
 
