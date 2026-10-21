@@ -2481,6 +2481,7 @@
 		9492CAFE0000000000000002 /* LastTerminalChildExitRecoveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CAFE0000000000000001 /* LastTerminalChildExitRecoveryTests.swift */; };
 		EC4AB60CCCF29E4DEC08265E /* LawmuxDefaultWorkspacePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B6F19C0C0BE6A9738DBE1 /* LawmuxDefaultWorkspacePath.swift */; };
 		61B9D94D45071A98DBDB4E67 /* LawmuxGlobalHotkeyWindowMaximizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAE988F7A5930E492617620 /* LawmuxGlobalHotkeyWindowMaximizer.swift */; };
+		7C1923D0CEF0AACEC6A68E96 /* LawmuxWorkspaceTitlePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FF431FBA0E266648385EE /* LawmuxWorkspaceTitlePolicy.swift */; };
 		A11CE0060000000000000001 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A11CE0050000000000000001 /* LICENSE */; };
 		272A62278FCC175ADA154567 /* LinkHoverIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2DDC7F468ACB78B5C88A0 /* LinkHoverIndicatorView.swift */; };
 		B79500310000000000000101 /* ListeningPortLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79500310000000000000102 /* ListeningPortLookup.swift */; };
@@ -7094,6 +7095,7 @@
 		9492CAFE0000000000000001 /* LastTerminalChildExitRecoveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTerminalChildExitRecoveryTests.swift; sourceTree = "<group>"; };
 		223B6F19C0C0BE6A9738DBE1 /* LawmuxDefaultWorkspacePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxDefaultWorkspacePath.swift; sourceTree = "<group>"; };
 		0AAE988F7A5930E492617620 /* LawmuxGlobalHotkeyWindowMaximizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxGlobalHotkeyWindowMaximizer.swift; sourceTree = "<group>"; };
+		D00FF431FBA0E266648385EE /* LawmuxWorkspaceTitlePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxWorkspaceTitlePolicy.swift; sourceTree = "<group>"; };
 		A11CE0050000000000000001 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		9BF2DDC7F468ACB78B5C88A0 /* LinkHoverIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHoverIndicatorView.swift; sourceTree = "<group>"; };
 		B79500310000000000000102 /* ListeningPortLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningPortLookup.swift; sourceTree = "<group>"; };
@@ -12443,6 +12445,7 @@
 				30AA2D44945B6C4A24A6D837 /* TerminalController+BrowserEmulation.swift */,
 				0AAE988F7A5930E492617620 /* LawmuxGlobalHotkeyWindowMaximizer.swift */,
 				223B6F19C0C0BE6A9738DBE1 /* LawmuxDefaultWorkspacePath.swift */,
+				D00FF431FBA0E266648385EE /* LawmuxWorkspaceTitlePolicy.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -16124,6 +16127,7 @@
 				8561C0128561C0128561C012 /* KeyboardShortcutSettingsObserver.swift in Sources */,
 				EC4AB60CCCF29E4DEC08265E /* LawmuxDefaultWorkspacePath.swift in Sources */,
 				61B9D94D45071A98DBDB4E67 /* LawmuxGlobalHotkeyWindowMaximizer.swift in Sources */,
+				7C1923D0CEF0AACEC6A68E96 /* LawmuxWorkspaceTitlePolicy.swift in Sources */,
 				272A62278FCC175ADA154567 /* LinkHoverIndicatorView.swift in Sources */,
 				B79500310000000000000101 /* ListeningPortLookup.swift in Sources */,
 				110436021104360211043602 /* LiveAgentSessionOwner.swift in Sources */,
