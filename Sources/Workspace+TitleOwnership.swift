@@ -62,6 +62,8 @@ extension Workspace {
 
     private func applyResolvedProcessTitle(_ title: String) {
         if processTitle != title { processTitle = title }
+        // lawmux: the git worktree name outranks the terminal title (see LawmuxWorkspaceTitlePolicy).
+        let title = lawmuxAutomaticTitle(forProcessTitle: title)
         guard customTitle == nil, self.title != title else { return }
 #if DEBUG
         cmuxDebugLog(

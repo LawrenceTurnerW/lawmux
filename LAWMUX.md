@@ -140,6 +140,21 @@ open "$HOME/Library/Developer/Xcode/DerivedData/cmux-lawmux/Build/Products/Debug
 
 ## lawmux 固有の機能
 
+### ワークスペースのタイトル
+
+サイドバーのタイトルは次の優先順位で決まります。上 2 つは本家の仕組み（`customTitle`）のままで、
+3 つ目を lawmux が足しています（`Sources/LawmuxWorkspaceTitlePolicy.swift`）。
+
+1. ユーザーが付けた名前（右クリック → Rename、`cmux rename-workspace`）
+2. エージェント連携の自動命名（会話内容から付く名前）
+3. フォーカス中のターミナルの cwd が属する **git worktree のディレクトリ名**（`.git` を上に辿って探す。
+   linked worktree なら worktree 側のフォルダ名）
+4. 本家どおりの端末タイトル（git 管理外のディレクトリのとき）
+
+cwd が変わるたびに 3 を計算し直します。本家側の差し込みは `Workspace+TitleOwnership.swift` と
+`Workspace.swift` の各 1 か所です。
+
+
 ### Shift+Space でアプリを呼び出す／戻る
 
 本家の「Show/Hide All Windows」（システム全体のホットキー）の登録機構を使い、押したときの
