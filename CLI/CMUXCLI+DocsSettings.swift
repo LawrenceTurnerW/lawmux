@@ -490,6 +490,7 @@ extension CMUXCLI {
     /// Completion candidates for `cmux settings <target>` and `cmux settings open
     /// <target>`. Canonical spellings only, matching `settingsTargetRawValue`.
     static let settingsTargetNames: [String] = [
+        "lawmux", // lawmux: the fork's own settings page
         "account", "app", "themes", "terminal", "networking", "computers", "sidebar-appearance",
         "custom-sidebars", "automation", "browser", "browser-import",
         "global-hotkey", "keyboard-shortcuts", "workspace-colors",
@@ -839,6 +840,8 @@ extension CMUXCLI {
             .replacingOccurrences(of: "_", with: "-")
 
         switch normalized {
+        case "lawmux": // lawmux
+            return "lawmux"
         case "account":
             return "account"
         case "app", "general":

@@ -23,6 +23,11 @@ extension SettingsWindowRoot {
         // Cloud, Devices, Networking, the sidebar sections, Beta Features,
         // Automation, Computer Use, Browser (with embedded Import), Global
         // Hotkey, Keyboard Shortcuts, Workspace Colors, cmux.json, Reset.
+        // lawmux: the fork's own page precedes upstream's sections.
+        slot(.lawmux, proxy: proxy) {
+            LawmuxSection(defaultsStore: defaultsStore, catalog: catalog)
+        }
+
         slot(.account, proxy: proxy) {
             AccountSection(
                 defaultsStore: defaultsStore,
