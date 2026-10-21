@@ -25,6 +25,7 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | ターミナル内リンクの開き先（`browser.openTerminalLinksInCmuxBrowser`） | 既定で内蔵ブラウザ | 既定で外部ブラウザ |
 | 新規ワークスペースの開始ディレクトリ（`app.workspaceInheritWorkingDirectory`） | 現在のワークスペースの cwd を引き継ぐ | 引き継がない。設定 → App → Default Workspace Path（`app.defaultWorkspacePath`）、未設定なら Ghostty の `working-directory`、それもなければホーム |
 | Default Workspace Path（`app.defaultWorkspacePath`）の意味 | Open Folder ダイアログの初期フォルダのみ。設定画面に項目なし | それに加えて、新規ワークスペースの開始ディレクトリ。設定 → 「一般」グループ先頭の **lawmux** ページで指定できる |
+| 通知でワークスペースを並び替え（`app.reorderOnNotification`） | 通知を受けたワークスペースをサイドバーの先頭へ移動 | 並び替えない（設定 → アプリ で戻せる） |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
 
