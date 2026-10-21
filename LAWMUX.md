@@ -21,6 +21,8 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | クラッシュレポート（Sentry） | あり | なし |
 | 自動アップデート（Sparkle） | あり | なし（`git pull` して再ビルド） |
 | サイドバーの最新通知テキスト（`sidebar.showNotificationMessage`） | 既定で表示 | 既定で非表示（設定でオンに戻せる） |
+| 内蔵ブラウザ（`browser.disabled`） | 既定で有効 | 既定で無効（設定で有効に戻せる） |
+| ターミナル内リンクの開き先（`browser.openTerminalLinksInCmuxBrowser`） | 既定で内蔵ブラウザ | 既定で外部ブラウザ |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
 CLI のコマンド名は本家と同じ `cmux` のままです。
