@@ -160,6 +160,25 @@ cwd が変わるたびに 3 を計算し直します。本家側の差し込み�
 `Workspace.swift` の各 1 か所です。
 
 
+### Claude のマスコット表示
+
+`~/.config/lawmux/icons/` に画像を置くと、Claude Code が動いているワークスペースの行で、タイトルの前に
+マスコットが出ます（`Sources/LawmuxMascotStatusView.swift`）。サイドバーの `claude_code` ピル
+（Running / Idle / Needs input）と同じ情報を絵にしただけで、ピル自体はそのまま残ります。
+画像はリポジトリには入れていません。各自で用意してください。
+
+| ファイル | いつ出るか | 無いとき |
+| --- | --- | --- |
+| `claude-running.gif` | 処理中（モデルの応答、ツール実行、サブエージェント） | 表示機能ごと無効（本家と同じ見た目） |
+| `claude-idle.png` | 次の入力待ち | running の画像を止めて薄く表示 |
+| `claude-needs-input.png` | 許可や質問で止まっている | running の画像を止めて表示 |
+
+アニメーション GIF は処理中だけ動きます。形式は NSImage が読めるものなら何でも構いません。
+大きさは通知バッジと同じ 16pt 基準（フォント倍率に追従）なので、ドット絵なら 32〜80px 四方が目安です。
+ファイルを差し替えると、更新日時を見て次の再描画で読み直します。
+Claude を起動していない行、終了した行には出ません。`sidebar.showCustomMetadata` を切るとピルと一緒に消えます。
+本家側の差し込みは `SidebarWorkspaceRowCellView.swift` の `// lawmux:` 5 行です。
+
 ### Shift+Space でアプリを呼び出す／戻る
 
 本家の「Show/Hide All Windows」（システム全体のホットキー）の登録機構を使い、押したときの

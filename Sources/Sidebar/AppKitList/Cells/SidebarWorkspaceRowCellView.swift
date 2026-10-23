@@ -35,6 +35,7 @@ final class SidebarWorkspaceRowTableCellView: NSTableCellView {
     private let statusGlyphButton = SidebarRowTaskStatusGlyphButton()
     /// `sidebar.compactAgentStatus` leading status glyph.
     private let compactStatusGlyphView = SidebarCompactStatusGlyphImageView()
+    private let lawmuxMascotView = LawmuxMascotStatusView() // lawmux: mascot before the title, mirrors the claude_code pill
     private let titleView = SidebarRowTextView(lines: 1)
     private let cloudImageView = NSImageView()
     private let trailingBadge = SidebarRowUnreadBadgeView()
@@ -330,6 +331,7 @@ final class SidebarWorkspaceRowTableCellView: NSTableCellView {
         }
         // The glyph view sets its own scaling mode, shared with the SwiftUI list.
         contentContainer.addSubview(compactStatusGlyphView)
+        contentContainer.addSubview(lawmuxMascotView) // lawmux:
         statusGlyphButton.isHidden = true
         statusGlyphButton.onClick = { [weak self] in self?.toggleStatusPopover() }
         contentContainer.addSubview(statusGlyphButton)
@@ -402,6 +404,7 @@ final class SidebarWorkspaceRowTableCellView: NSTableCellView {
         leadingSpinner?.isPresentationActive = isActive
         trailingSpinner?.isPresentationActive = isActive
         compactStatusGlyphView.isPresentationActive = isActive
+        lawmuxMascotView.isPresentationActive = isActive // lawmux:
     }
 
     func suspendPresentation(commitEdits: Bool = false) {
@@ -603,6 +606,7 @@ final class SidebarWorkspaceRowTableCellView: NSTableCellView {
         }
         reconcileStatusPopover(model: model, showsAnchor: showsStatusGlyph)
         configureCompactStatusGlyph(model: model, palette: palette)
+        lawmuxMascotView.configure(entries: model.snapshot.metadataEntries) // lawmux:
 
         // Compact status rows are one line, so title wrapping does not undo it.
         let titleLineLimit = settings.wrapsWorkspaceTitles && snapshot.compactStatusGlyph == nil ? 8 : 1
@@ -1327,6 +1331,10 @@ final class SidebarWorkspaceRowTableCellView: NSTableCellView {
             x -= SidebarCompactStatusGlyph.leadingPullIn
             place(compactStatusGlyphView, size: NSSize(width: side, height: side), centerY: firstLineCenter)
             x += side + SidebarCompactStatusGlyph.titleSpacing
+        }
+        if !lawmuxMascotView.isHidden { // lawmux: badge-sized mascot before the title
+            place(lawmuxMascotView, size: NSSize(width: badgeSide, height: badgeSide), centerY: firstLineCenter)
+            x += badgeSide + titleRowSpacing
         }
 
         x = cloudImageView.layoutLeadingSidebarWorkspaceAccessory(
