@@ -31,7 +31,7 @@ final class CmuxFeatureFlags {
     static let shared = CmuxFeatureFlags(publishesOffMainSnapshot: true)
 
     private static let mobileConnectButtonDefault = false
-    private static let sidebarAccountButtonDefault = true
+    private static let sidebarAccountButtonDefault = false // lawmux: upstream defaults to true; sign-in has nothing to sign in to here
 
     private static let agentChatUIDefault = false
     #if DEBUG

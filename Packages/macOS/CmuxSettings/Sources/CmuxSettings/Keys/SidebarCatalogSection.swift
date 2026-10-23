@@ -88,7 +88,7 @@ public struct SidebarCatalogSection: SettingCatalogSection {
     /// independently of the Git branch and working-directory details.
     public let showCloudDeviceIcons = DefaultsKey<Bool>(
         id: "sidebar.showCloudDeviceIcons",
-        defaultValue: true,
+        defaultValue: false, // lawmux: upstream defaults to true; lawmux has no Cloud, so hide the footer Cloud button and device icons
         userDefaultsKey: "sidebarShowCloudDeviceIcons"
     )
 
