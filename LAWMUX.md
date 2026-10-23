@@ -8,6 +8,8 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 - 「cmux」は Manaflow, Inc. のプロダクト名です。lawmux は本家とは無関係の非公式 fork で、
   不具合を本家に報告しないでください。
 - バイナリは配布していません。各自でソースからビルドしてください。
+- Claude Code などのエージェント向けのルールは [.claude/CLAUDE.md](.claude/CLAUDE.md) にあります。
+  ルート直下の `CLAUDE.md` は本家のものをそのまま置いているだけで、lawmux での作業には `.claude/CLAUDE.md` が優先です。
 
 ## 本家 cmux との違い
 
