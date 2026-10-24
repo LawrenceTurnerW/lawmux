@@ -70,7 +70,7 @@ extension ShortcutAction {
         case .openSettings: return ShortcutStroke(key: ",", command: true)
         case .openTeamPicker: return ShortcutStroke(key: "t", command: true, shift: true, option: true)
         case .reloadConfiguration: return ShortcutStroke(key: ",", command: true, shift: true)
-        case .showHideAllWindows: return ShortcutStroke(key: ".", command: true, option: true, control: true)
+        case .showHideAllWindows: return ShortcutStroke(key: "space", shift: true) // lawmux: upstream defaults to ⌘⌥⌃.; Shift+Space calls lawmux from anywhere
         case .globalSearch: return ShortcutStroke(key: "f", command: true, option: true)
         case .newWindow: return ShortcutStroke(key: "n", command: true, shift: true)
         case .closeWindow: return ShortcutStroke(key: "w", command: true, control: true)
