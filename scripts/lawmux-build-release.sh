@@ -42,8 +42,9 @@ if [[ "$DETACH" == 1 && "$INSTALL" != 1 ]]; then
 fi
 
 cd "$(git rev-parse --show-toplevel)"
-# Xcode run-script phases look here for cargo, go, zig and bun.
-export PATH="${CARGO_HOME:-${HOME}/.cargo}/bin:/opt/homebrew/bin:/usr/local/bin:${PATH}"
+# Xcode run-script phases look here for cargo, go, zig and bun. Homebrew's
+# rustup is keg-only, so its cargo proxy lives in opt/rustup/bin, not bin.
+export PATH="${CARGO_HOME:-${HOME}/.cargo}/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/bin:/usr/local/bin:${PATH}"
 
 DERIVED_DATA="${LAWMUX_DERIVED_DATA:-${HOME}/Library/Developer/Xcode/DerivedData/lawmux-release}"
 PRODUCTS="$DERIVED_DATA/Build/Products/Release"
