@@ -397,7 +397,7 @@ public struct AppCatalogSection: SettingCatalogSection {
 
     public let systemWideHotkeyEnabled = DefaultsKey<Bool>(
         id: "app.systemWideHotkeyEnabled",
-        defaultValue: false,
+        defaultValue: true, // lawmux: upstream defaults to false; the Shift+Space hotkey is on from the first launch
         userDefaultsKey: "systemWideHotkey.enabled"
     )
 

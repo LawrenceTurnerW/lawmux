@@ -30,6 +30,7 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | 通知でワークスペースを並び替え（`app.reorderOnNotification`） | 通知を受けたワークスペースをサイドバーの先頭へ移動 | 並び替えない（設定 → アプリ で戻せる） |
 | サイドバー左下のサインインボタン（feature flag `sidebar-account-button-enabled-release`） | 表示 | 非表示。`defaults write com.lawrenceturnerw.lawmux cmux.flags.override.sidebar-account-button-enabled-release -bool true` で戻せる |
 | サイドバー左下のクラウドボタンとデバイスアイコン（`sidebar.showCloudDeviceIcons`） | 既定で表示 | 既定で非表示（設定 → Sidebar で戻せる） |
+| システム全体のホットキー（`shortcuts.bindings.showHideAllWindows`、`app.systemWideHotkeyEnabled`） | ⌘⌥⌃.、既定でオフ | Shift+Space、既定でオン（設定 → Global Hotkey で変更） |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
 
@@ -200,13 +201,14 @@ log show --predicate 'subsystem == "com.lawrenceturnerw.lawmux"' --last 10m --st
 lawmux ではその検証を Shift だけでも通るよう緩めています（`// lawmux:` の 2 か所）。
 本家側の変更は、この 2 か所と `AppDelegate` のホットキー入口の数行だけです。
 
-設定は次の 2 つです。
+既定で有効で、キーも Shift+Space です（本家の既定は ⌘⌥⌃. で、フラグはオフ）。別の Mac でビルドしても
+設定なしでそのまま使えます。変えたいときは設定 → Global Hotkey か、次の 2 つで上書きできます。
 
 ```sh
 # ショートカット本体（~/.config/lawmux/cmux.json に書かれる）
 /Applications/lawmux.app/Contents/Resources/bin/cmux config set shortcuts.bindings.showHideAllWindows '"shift+space"'
 # 有効化フラグ（設定 → Global Hotkey → Enable System-Wide Hotkey と同じ）
-defaults write com.lawrenceturnerw.lawmux systemWideHotkey.enabled -bool true
+defaults write com.lawrenceturnerw.lawmux systemWideHotkey.enabled -bool false
 ```
 
 lawmux が起動していないときはホットキーは反応しません（アプリ内で登録しているため）。
