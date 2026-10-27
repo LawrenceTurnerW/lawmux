@@ -177,7 +177,7 @@ public struct AppCatalogSection: SettingCatalogSection {
 
     public let confirmQuitMode = DefaultsKey<ConfirmQuitMode>(
         id: "app.confirmQuit",
-        defaultValue: .always,
+        defaultValue: .never, // lawmux: upstream defaults to .always; Cmd+Q quits without asking
         userDefaultsKey: "confirmQuit"
     )
 

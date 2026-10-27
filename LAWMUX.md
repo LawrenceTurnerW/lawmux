@@ -31,6 +31,7 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | サイドバー左下のサインインボタン（feature flag `sidebar-account-button-enabled-release`） | 表示 | 非表示。`defaults write com.lawrenceturnerw.lawmux cmux.flags.override.sidebar-account-button-enabled-release -bool true` で戻せる |
 | サイドバー左下のクラウドボタンとデバイスアイコン（`sidebar.showCloudDeviceIcons`） | 既定で表示 | 既定で非表示（設定 → Sidebar で戻せる） |
 | システム全体のホットキー（`shortcuts.bindings.showHideAllWindows`、`app.systemWideHotkeyEnabled`） | ⌘⌥⌃.、既定でオフ | Shift+Space、既定でオン（設定 → Global Hotkey で変更） |
+| ⌘Q の終了確認（`app.confirmQuit`） | 既定で毎回確認（always） | 既定で確認しない（never）。設定 → App → Warn Before Quit で戻せる |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
 
