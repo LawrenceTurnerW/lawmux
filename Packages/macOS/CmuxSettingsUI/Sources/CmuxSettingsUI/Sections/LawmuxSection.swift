@@ -10,10 +10,12 @@ import SwiftUI
 public struct LawmuxSection: View {
     private let catalog: SettingCatalog
     @State private var defaultWorkspacePath: DefaultsValueModel<String>
+    @State private var newWorkspaceCommand: DefaultsValueModel<String>
 
     public init(defaultsStore: UserDefaultsSettingsStore, catalog: SettingCatalog) {
         self.catalog = catalog
         _defaultWorkspacePath = State(initialValue: DefaultsValueModel(store: defaultsStore, key: catalog.app.defaultWorkspacePath))
+        _newWorkspaceCommand = State(initialValue: DefaultsValueModel(store: defaultsStore, key: catalog.app.lawmuxNewWorkspaceCommand))
     }
 
     public var body: some View {
@@ -22,10 +24,11 @@ public struct LawmuxSection: View {
                 .accessibilityIdentifier("SettingsLawmuxSection")
             SettingsCard {
                 LawmuxDefaultWorkspaceDirectoryRow(model: defaultWorkspacePath)
+                LawmuxNewWorkspaceCommandRow(model: newWorkspaceCommand)
             }
         }
         .task {
-            startSettingsObservation([defaultWorkspacePath])
+            startSettingsObservation([defaultWorkspacePath, newWorkspaceCommand])
         }
     }
 }

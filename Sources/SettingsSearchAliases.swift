@@ -6,7 +6,7 @@ enum SettingsSearchAliasIndex {
         case .computers:
             return localized("settings.devices.keywords", defaultValue: "devices my devices computers macs mac discovery discover discoverable incoming access tailscale pairing remote workspaces")
         case .lawmux:
-            return "lawmux fork default workspace directory folder new workspace デフォルト ワークスペース ディレクトリ フォルダ 新規" // lawmux
+            return "lawmux fork default workspace directory folder new workspace command claude codex デフォルト ワークスペース ディレクトリ フォルダ 新規 コマンド 起動" // lawmux
         case .account:
             return localized("settings.search.alias.section.account", defaultValue: "auth authentication login logout sign in sign out email user profile team")
         case .app:

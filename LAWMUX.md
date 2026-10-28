@@ -32,6 +32,7 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | サイドバー左下のクラウドボタンとデバイスアイコン（`sidebar.showCloudDeviceIcons`） | 既定で表示 | 既定で非表示（設定 → Sidebar で戻せる） |
 | システム全体のホットキー（`shortcuts.bindings.showHideAllWindows`、`app.systemWideHotkeyEnabled`） | ⌘⌥⌃.、既定でオフ | Shift+Space、既定でオン（設定 → Global Hotkey で変更） |
 | ⌘Q の終了確認（`app.confirmQuit`） | 既定で毎回確認（always） | 既定で確認しない（never）。設定 → App → Warn Before Quit で戻せる |
+| 新規ワークスペースで実行するコマンド（`lawmux.newWorkspaceCommand`、設定 → lawmux） | なし | ⌘N・＋ボタン・File → New Workspace で作ったターミナルに、シェルの準備後に打ち込んで実行する（例: `claude`）。既定は空。CLI・レイアウト・セッション復元には効かない |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
 

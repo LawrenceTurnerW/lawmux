@@ -8898,6 +8898,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
         forceLocal: Bool = false,
         inheritWorkingDirectoryOverride: Bool? = nil
     ) -> Bool {
+        // lawmux: a plain terminal workspace also types the configured new-workspace command.
+        let createdWorkspaceHandler = LawmuxNewWorkspaceCommand.wrappingCreatedHandler(
+            createdWorkspaceHandler, initialSurface: initialSurface
+        ) { [weak self] text, workspace in self?.lawmuxSendTextWhenReady(text, to: workspace) }
         // `runsCustomConfiguredAction` narrows `skipConfiguredAction`: the
         // caller keeps its own plain workspace when the configured action is
         // the built-in default, and yields only to a custom one.
@@ -11023,6 +11027,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
         if launch.delivery == .typedCommand {
             sendWelcomeCommandWhenReady(to: workspace)
         }
+    }
+
+    // lawmux: internal entry to the private typed-text path for LawmuxNewWorkspaceCommand.
+    func lawmuxSendTextWhenReady(_ text: String, to workspace: Workspace) {
+        sendTextWhenReady(text, to: workspace)
     }
 
     func sendWelcomeCommandWhenReady(to workspace: Workspace, markShownOnSend: Bool = false) {
