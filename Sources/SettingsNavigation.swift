@@ -136,7 +136,7 @@ enum SettingsNavigationTarget: String, CaseIterable, Identifiable {
         case .computers:
             return String(localized: "settings.devices.keywords", defaultValue: "devices my devices computers macs mac discovery discover discoverable incoming access tailscale pairing remote workspaces")
         case .lawmux:
-            return "\(title) fork default workspace directory folder" // lawmux
+            return "\(title) fork default workspace directory folder new workspace command" // lawmux
         case .account:
             return "\(title) sign in team sync"
         case .app:
