@@ -89,6 +89,9 @@ install_app() {
   # the bundle id; the installed app is the only one that should be registered.
   "$LSREGISTER" -u "$APP" >/dev/null 2>&1 || true
   "$LSREGISTER" -f "$DEST" >/dev/null 2>&1 || true
+  # Spotlight ignores .metadata_never_index, so the build copy would still show
+  # up in Launchpad as a second lawmux. Each build replaces it anyway.
+  rm -rf "$APP"
 }
 
 print_result() {
@@ -142,11 +145,6 @@ if [[ ! -e GhosttyKit.xcframework ]]; then
   echo "error: GhosttyKit.xcframework is missing; run ./scripts/setup.sh first" >&2
   exit 1
 fi
-
-# Keep Spotlight (and so Launchpad) from listing the build output as a second
-# lawmux next to /Applications/lawmux.app.
-mkdir -p "$DERIVED_DATA"
-touch "$DERIVED_DATA/.metadata_never_index"
 
 # Build settings lawmux overrides on the command line (upstream's project stays
 # untouched). Changing either knob invalidates the Swift build cache, so the
