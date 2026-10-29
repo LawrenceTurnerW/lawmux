@@ -87,6 +87,8 @@ cd lawmux
 
 `lawmux-build-release.sh` は Release 構成をビルドし、`cmux.app` を `lawmux.app` に改名して
 署名を検証したうえで、`--install` なら `/Applications/lawmux.app` に置き、`--open` なら起動します。
+インストール後は DerivedData 側の `lawmux.app` を削除します（Spotlight が索引して Launchpad に
+lawmux が 2 つ並ぶため）。`--install` なしのビルドでは成果物がそのまま残ります。
 署名はアドホック（Apple Developer 登録なし）です。自分でビルドしたアプリなので Gatekeeper の
 警告は出ません。本家 cmux が起動したままでも実行できます。
 
