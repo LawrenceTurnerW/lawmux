@@ -342,6 +342,11 @@ ROOT_PREFIX = "glaeda-root-"
 SIDE_PREFIX = "glaeda-side-"
 GUI_PREFIX = "glaeda-gui-"
 ROLE_NAMES = ("root", "side", "gui")
+# feat-cmux-next's lane labels, which main's picker never hands out (so persistent() leaves them out): the session
+# and fast roles (glaeda#1530), the freshness slot's dev role (glaeda#1628) and the nightly slot (glaeda#1684). The
+# rescue watches jobs on them (owned_pool_rescue.job_pool()) and the janitor's snapshot counts them
+# (queue_janitor.pool_load_snapshot()), so a placement or the rescue can tell a lane label that runs nothing.
+LANE_LABEL = re.compile(rf"glaeda-(?:aws-)?(?:session-|fast-|dev-|nightly-)(?:xl|std|light)-xcode-{XCODE_VERSION}")
 # Capability labels glaeda puts on some runners of an owned pool, requested
 # beside the pool label, never alone. `glaeda-ios-sim`: a mini with an iOS
 # simulator role and an iOS 26.x runtime (ios_runner_pool.py). They are not
@@ -496,6 +501,17 @@ class Settings:
     stale: tuple[str, ...] = ()
     # CI_PR_POOL_QUEUE_ROUNDS; 0 for a caller that does not pass it (E2E, iOS).
     queue_rounds: int = 0
+
+
+# The dedicated nightly-next builder's label (feat-cmux-next's nightly_build_runner.py offers it
+# first): one mini whose job-started hook admits only nightly-next's app build. The rescue moves a
+# build queued on it past its budget, as on an owned pool, so no build waits on that one machine.
+NIGHTLY_DEDICATED_LABEL = "glaeda-trusted-next-nightly"
+
+
+def nightly_dedicated(label: str) -> bool:
+    """The dedicated nightly-next builder's label."""
+    return (label or "") == NIGHTLY_DEDICATED_LABEL
 
 
 def persistent(label: str) -> bool:
