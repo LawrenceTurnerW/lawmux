@@ -18,8 +18,7 @@
     `LawrenceTurnerW/lawmux` に PR を出す。本家に出すのは、本家向けにわざわざ作った変更のときだけ。
   - `web/`、`workers/`、`services/` などサーバー側の手順。lawmux では使わない。
 - 本家の `CLAUDE.md` でそのまま役に立つもの: skills の対応表（アーキテクチャ、デバッグ、
-  ローカライズ、テスト配線、ショートカット）、`scripts/verify-local.py`、`STYLE.md`、
-  「ユーザーが使っている `/Applications/cmux.app`（`com.cmuxterm.app`）を絶対に終了・置き換えしない」。
+  ローカライズ、テスト配線、ショートカット）、`scripts/verify-local.py`、`STYLE.md`。
 - この checkout が lawmux かどうかは `CMUX_BUNDLE_ID` で分かる（`com.lawrenceturnerw.lawmux` なら
   lawmux の中で動いている）。
 - 本家由来のファイルが lawmux で読み込まれるのは仕方がないが、fork 側のルールは本家が持たない
@@ -53,8 +52,7 @@
   `cmux workspace create --cwd ~/Work/lawmux --command "./scripts/lawmux-build-release.sh --install --open --detach"`。
   復元で戻ってきたら、そのワークスペースを閉じる。再起動で ref（`workspace:…`）は振り直されるので、
   `--name "lawmux install"` を付けて作り、`cmux workspace list` のタイトルで探して `cmux workspace close --workspace <ref> --force`。
-- `/Applications/cmux.app`（`com.cmuxterm.app`）は本家のアプリで、ユーザーが使っている。
-  絶対に終了・置き換えしない。lawmux（`com.lawrenceturnerw.lawmux`）の終了は作業上必要なら行ってよい。
+- lawmux（`com.lawrenceturnerw.lawmux`）の終了は作業上必要なら行ってよい。
 
 ## ブランチ運用
 
