@@ -439,7 +439,7 @@ enum KeyboardShortcutSettings {
                 // Avoid AppKit-reserved keystrokes such as Cmd+. (modal cancel). Default to
                 // Ctrl+Option+Cmd+. so the global hotkey does not collide with the standard
                 // cancel keystroke that NSAlert/NSOpenPanel use.
-                return StoredShortcut(key: ".", command: true, shift: false, option: true, control: true)
+                return StoredShortcut(key: "space", command: false, shift: true, option: false, control: false) // lawmux: upstream defaults to ⌘⌥⌃.; must match ShortcutAction+Defaults.swift
             case .globalSearch:
                 return StoredShortcut(key: "f", command: true, shift: false, option: true, control: false)
             case .newWindow:
@@ -1189,7 +1189,7 @@ enum KeyboardShortcutSettings {
 enum SystemWideHotkeySettings {
     static let enabledKey = "systemWideHotkey.enabled"
     static let legacyShortcutKey = "systemWideHotkey.shortcut"
-    static let defaultEnabled = false
+    static let defaultEnabled = true // lawmux: upstream defaults to false; must match app.systemWideHotkeyEnabled, which registration does not read
     static let action: KeyboardShortcutSettings.Action = .showHideAllWindows
 
     static var defaultShortcut: StoredShortcut { action.defaultShortcut }

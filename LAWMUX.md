@@ -199,15 +199,21 @@ Claude を起動していない行、終了した行には出ません。`sideba
 押したときの判断はログに残るので、挙動がおかしいときは次で確認できます。
 
 ```sh
-log show --predicate 'subsystem == "com.lawrenceturnerw.lawmux"' --last 10m --style compact
+/usr/bin/log show --predicate 'subsystem == "com.lawrenceturnerw.lawmux"' --last 10m --style compact
 ```
+
+zsh では `log` がシェルの組み込みと衝突するので、`/usr/bin/log` と書きます。
 
 本家は Command / Option / Control のいずれかを必須にしていて Shift+Space を受け付けないため、
 lawmux ではその検証を Shift だけでも通るよう緩めています（`// lawmux:` の 2 か所）。
 本家側の変更は、この 2 か所と `AppDelegate` のホットキー入口の数行だけです。
 
 既定で有効で、キーも Shift+Space です（本家の既定は ⌘⌥⌃. で、フラグはオフ）。別の Mac でビルドしても
-設定なしでそのまま使えます。変えたいときは設定 → Global Hotkey か、次の 2 つで上書きできます。
+設定なしでそのまま使えます。既定値は設定パッケージ（`ShortcutAction+Defaults.swift` の
+キー、`AppCatalogSection.swift` の有効フラグ。設定画面の表示に使う）とアプリ本体（`KeyboardShortcutSettings.swift`
+の `Action.defaultShortcut` と `SystemWideHotkeySettings.defaultEnabled`。実際の登録に使う）に二重にあるので、
+変えるときは両方そろえます（片方だけだと、画面は Shift+Space なのに登録されない状態になる。#25）。
+変えたいときは設定 → Global Hotkey か、次の 2 つで上書きできます。
 
 ```sh
 # ショートカット本体（~/.config/lawmux/cmux.json に書かれる）
