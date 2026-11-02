@@ -33,6 +33,7 @@ cmux のターミナル部分（macOS アプリ・CLI）を、自分の環境向
 | システム全体のホットキー（`shortcuts.bindings.showHideAllWindows`、`app.systemWideHotkeyEnabled`） | ⌘⌥⌃.、既定でオフ | Shift+Space、既定でオン（設定 → Global Hotkey で変更） |
 | ⌘Q の終了確認（`app.confirmQuit`） | 既定で毎回確認（always） | 既定で確認しない（never）。設定 → App → Warn Before Quit で戻せる |
 | 新規ワークスペースで実行するコマンド（`lawmux.newWorkspaceCommand`、設定 → lawmux） | なし | ⌘N・＋ボタン・File → New Workspace で作ったターミナルに、シェルの準備後に打ち込んで実行する（例: `claude`）。既定は空。CLI・レイアウト・セッション復元には効かない |
+| Claude Code の更新ボタン（サイドバー左下、`LawmuxClaudeCodeUpdater.swift`） | なし（Claude 起動時のバナー「Update available! Run: brew upgrade claude-code@latest」だけ） | Homebrew cask `claude-code@latest` が古いとボタンが出る。クリックで `brew upgrade` を実行（動作中の Claude はそのまま）。終わると再起動ボタンに変わり、処理中の Claude セッションが 0 件のときだけ押せる。再起動後はセッション復元で Claude が新版で再開する。更新チェックは起動 5 秒後と 6 時間ごと（formulae.brew.sh の API）。ログは `~/.local/state/lawmux/claude-code-upgrade.log` |
 | アプリアイコン | 青い `>` | 無線機のアイコン（ライトは白地に黒、ダークは黒地に白）。元画像は `scripts/lawmux-app-icon-glyph.png`、`scripts/lawmux-make-app-icon.sh` で `AppIcon` / `AppIconLight` / `AppIconDark` の PNG を作り直す。本家の取り込みでこれらの PNG が衝突したら、どちらかを採ってからこのスクリプトを流し直す |
 
 Bundle ID・設定・ソケットが分かれているので、本家 cmux と同時にインストール・起動できます。
