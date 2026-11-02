@@ -70,7 +70,6 @@ struct LawmuxClaudeCodeUpdateButton: View {
                 ) { updater.retry() }
             }
         }
-        .onAppear { updater.start() }
     }
 
     private var secondary: Color {

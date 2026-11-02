@@ -28,6 +28,13 @@ import os
 final class LawmuxClaudeCodeUpdater: ObservableObject {
     static let shared = LawmuxClaudeCodeUpdater()
 
+    /// The first footer that observes `shared` starts the periodic check.
+    /// (A SwiftUI `onAppear` cannot do it: while the phase is `.hidden` the
+    /// button renders `EmptyView`, which never appears.)
+    private init() {
+        start()
+    }
+
     enum Phase: Equatable {
         /// Nothing to show: up to date, not a Homebrew install, or not checked yet.
         case hidden
@@ -56,8 +63,8 @@ final class LawmuxClaudeCodeUpdater: ObservableObject {
 
     // MARK: - Lifecycle
 
-    /// Starts the periodic check. Safe to call from every footer instance.
-    func start() {
+    /// Starts the periodic check; idempotent.
+    private func start() {
         guard !started else { return }
         started = true
         periodicCheck = Task { [weak self] in
