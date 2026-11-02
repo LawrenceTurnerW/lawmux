@@ -9,12 +9,12 @@ import Foundation
 /// language setting applies an `AppleLanguages` override, which
 /// `Bundle.main.preferredLocalizations` reflects after a relaunch) and
 /// English everywhere else.
-enum LawmuxText {
-    static func string(_ english: String, ja japanese: String) -> String {
+public enum LawmuxText {
+    public static func string(_ english: String, ja japanese: String) -> String {
         isJapanese ? japanese : english
     }
 
-    static var isJapanese: Bool {
+    public static var isJapanese: Bool {
         let preferred = Bundle.main.preferredLocalizations.first
             ?? Locale.preferredLanguages.first
             ?? "en"

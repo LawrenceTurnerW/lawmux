@@ -15831,6 +15831,7 @@ struct SidebarFooterButtons: View {
                     }
                 }
             }
+            LawmuxClaudeCodeUpdateButton() // lawmux: Claude Code upgrade / restart, where sign-in and Cloud were
             // Command-hold reveal: appears immediately before Upgrade. It stays
             // mounted while its popover is open so releasing ⌘ does not dismiss it.
             if shows(.shortcutDiscovery),

@@ -2556,6 +2556,8 @@
 		8582A1000000000000000002 /* KimiResumeReviewRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582A1000000000000000001 /* KimiResumeReviewRegressionTests.swift */; };
 		87C609D63F03597AC12C8B0A /* LastSurfaceClosePreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE0C080FF0FCCE8A8CA930 /* LastSurfaceClosePreferenceTests.swift */; };
 		9492CAFE0000000000000002 /* LastTerminalChildExitRecoveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CAFE0000000000000001 /* LastTerminalChildExitRecoveryTests.swift */; };
+		07B95500D40AE173FE22EA77 /* LawmuxClaudeCodeUpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F6A79A220493B7CCFC99D /* LawmuxClaudeCodeUpdateButton.swift */; };
+		2434ACD275246FB537AE4C37 /* LawmuxClaudeCodeUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90DAC3E22C88F8AE5E02385 /* LawmuxClaudeCodeUpdater.swift */; };
 		EC4AB60CCCF29E4DEC08265E /* LawmuxDefaultWorkspacePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B6F19C0C0BE6A9738DBE1 /* LawmuxDefaultWorkspacePath.swift */; };
 		61B9D94D45071A98DBDB4E67 /* LawmuxGlobalHotkeyWindowMaximizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAE988F7A5930E492617620 /* LawmuxGlobalHotkeyWindowMaximizer.swift */; };
 		6ED5395019F51663F6274D65 /* LawmuxMascotStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD76C1051286A28218F942E /* LawmuxMascotStatusView.swift */; };
@@ -7253,6 +7255,8 @@
 		8582A1000000000000000001 /* KimiResumeReviewRegressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimiResumeReviewRegressionTests.swift; sourceTree = "<group>"; };
 		F2EE0C080FF0FCCE8A8CA930 /* LastSurfaceClosePreferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSurfaceClosePreferenceTests.swift; sourceTree = "<group>"; };
 		9492CAFE0000000000000001 /* LastTerminalChildExitRecoveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTerminalChildExitRecoveryTests.swift; sourceTree = "<group>"; };
+		F46F6A79A220493B7CCFC99D /* LawmuxClaudeCodeUpdateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxClaudeCodeUpdateButton.swift; sourceTree = "<group>"; };
+		F90DAC3E22C88F8AE5E02385 /* LawmuxClaudeCodeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxClaudeCodeUpdater.swift; sourceTree = "<group>"; };
 		223B6F19C0C0BE6A9738DBE1 /* LawmuxDefaultWorkspacePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxDefaultWorkspacePath.swift; sourceTree = "<group>"; };
 		0AAE988F7A5930E492617620 /* LawmuxGlobalHotkeyWindowMaximizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxGlobalHotkeyWindowMaximizer.swift; sourceTree = "<group>"; };
 		4BD76C1051286A28218F942E /* LawmuxMascotStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LawmuxMascotStatusView.swift; sourceTree = "<group>"; };
@@ -12683,6 +12687,8 @@
 				51A0CCBCBE41675730B4AC82 /* LawmuxNewWorkspaceCommand.swift */,
 				C2452EDA6ED2355F908EE912 /* AppDelegate+KiroAgentMessages.swift */,
 				D4D9700C7689786CCDB82CAE /* TerminalController+AgentMessageClaim.swift */,
+				F90DAC3E22C88F8AE5E02385 /* LawmuxClaudeCodeUpdater.swift */,
+				F46F6A79A220493B7CCFC99D /* LawmuxClaudeCodeUpdateButton.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -16452,6 +16458,8 @@
 				A5F10011A1B2C3D4E5F60719 /* KeyboardShortcutSettingsFileStore.swift in Sources */,
 				C1713004C1713004C1713004 /* KeyboardShortcutSettingsLookup.swift in Sources */,
 				8561C0128561C0128561C012 /* KeyboardShortcutSettingsObserver.swift in Sources */,
+				07B95500D40AE173FE22EA77 /* LawmuxClaudeCodeUpdateButton.swift in Sources */,
+				2434ACD275246FB537AE4C37 /* LawmuxClaudeCodeUpdater.swift in Sources */,
 				EC4AB60CCCF29E4DEC08265E /* LawmuxDefaultWorkspacePath.swift in Sources */,
 				61B9D94D45071A98DBDB4E67 /* LawmuxGlobalHotkeyWindowMaximizer.swift in Sources */,
 				6ED5395019F51663F6274D65 /* LawmuxMascotStatusView.swift in Sources */,
