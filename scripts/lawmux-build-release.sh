@@ -97,7 +97,8 @@ install_app() {
 print_result() {
   echo
   echo "lawmux.app: $1"
-  echo "bundle id:  $BUNDLE_ID ($(codesign -dv "$1" 2>&1 | sed -n 's/^Signature=//p'))"
+  # "adhoc" for an ad-hoc signature, otherwise the certificate name.
+  echo "bundle id:  $BUNDLE_ID ($(codesign -d --verbose=2 "$1" 2>&1 | sed -n -e 's/^Signature=//p' -e 's/^Authority=//p' | head -1))"
 }
 
 # ---------------------------------------------------------------------------
@@ -170,8 +171,20 @@ else
   BUILD_SETTINGS+=(SWIFT_COMPILATION_MODE=incremental)
   MODE_NOTE="incremental"
 fi
+# A self-signed code-signing certificate named "lawmux" (made by
+# scripts/lawmux-make-signing-cert.sh) gives every build the same signing
+# identity, so the macOS permissions granted to lawmux (Accessibility, Screen
+# Recording, Automation) survive a reinstall. Ad-hoc signatures change with
+# every build and macOS treats each one as a new app. Without the
+# certificate, ad-hoc as before.
+if security find-identity -v -p codesigning 2>/dev/null | grep -q '"lawmux"'; then
+  BUILD_SETTINGS+=(CODE_SIGN_IDENTITY=lawmux CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM=)
+  SIGN_NOTE="signed with the lawmux certificate"
+else
+  SIGN_NOTE="ad-hoc signed; run scripts/lawmux-make-signing-cert.sh to keep macOS permissions across reinstalls"
+fi
 
-echo "==> Building Release into $DERIVED_DATA ($ARCH_NOTE, $MODE_NOTE Swift compilation)"
+echo "==> Building Release into $DERIVED_DATA ($ARCH_NOTE, $MODE_NOTE Swift compilation, $SIGN_NOTE)"
 # CODE_SIGN_ENTITLEMENTS= mirrors upstream's Release dev builds: the entitlements
 # file needs a provisioning profile that an ad-hoc build does not have.
 xcodebuild \
