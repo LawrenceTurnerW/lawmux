@@ -22,7 +22,7 @@ struct LawmuxClaudeCodeUpdateButton: View {
             case .available(let installed, let latest):
                 button(
                     systemName: "arrow.down.circle",
-                    tint: accent,
+                    tint: accent.color,
                     help: LawmuxText.string(
                         "Claude Code \(latest) is available (installed \(installed)). Click to run brew upgrade; running sessions keep working.",
                         ja: "Claude Code \(latest) があります（インストール済み: \(installed)）。クリックで brew upgrade を実行します。動作中のセッションはそのまま動きます。"
@@ -45,7 +45,7 @@ struct LawmuxClaudeCodeUpdateButton: View {
                 let busy = updater.busyClaudeCount
                 button(
                     systemName: busy > 0 ? "clock.arrow.circlepath" : "arrow.clockwise.circle",
-                    tint: busy > 0 ? secondary : accent,
+                    tint: busy > 0 ? secondary : accent.color,
                     help: busy > 0
                         ? LawmuxText.string(
                             "Claude Code \(latest) is installed. Restart lawmux once the \(busy) running Claude session(s) finish; the restart ends every process in every workspace and restores shells and Claude sessions.",
