@@ -97,7 +97,8 @@ install_app() {
 print_result() {
   echo
   echo "lawmux.app: $1"
-  echo "bundle id:  $BUNDLE_ID ($(codesign -dv "$1" 2>&1 | sed -n 's/^Signature=//p'))"
+  # "adhoc" for an ad-hoc signature, otherwise the certificate name.
+  echo "bundle id:  $BUNDLE_ID ($(codesign -dv "$1" 2>&1 | sed -n -e 's/^Signature=//p' -e 's/^Authority=//p' | head -1))"
 }
 
 # ---------------------------------------------------------------------------
