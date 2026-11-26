@@ -989,6 +989,8 @@ extension Workspace {
     @discardableResult
     func restoreClosedPanel(_ entry: ClosedPanelHistoryEntry) -> UUID? {
         guard acceptsRestoredPanel(entry.snapshot, projection: entry.projection) else { return nil }
+        // A Chief tab closed while Chief was on stays closed while it's off.
+        guard entry.snapshot.type != .chief || ChiefSettings.isEnabled else { return nil }
         // Inert nested scaffolds must not enter the user-split terminal repair path.
         let wasProgrammaticSplit = isProgrammaticSplit
         isProgrammaticSplit = true
@@ -10054,7 +10056,7 @@ final class Workspace: Identifiable, ObservableObject, FilePreviewTabMetadataHos
     /// query (the subscription cache lags ~1s, which would let a just-started
     /// command slip through), falling back to the cached state when the link is
     /// down. The pane is removed by the resulting `%layout-change` (or
-    /// `%window-close` for the window's last pane), never locally.
+    /// `%unlinked-window-close` for the window's last pane), never locally.
     func requestRemoteTmuxPaneClose(windowMirror: RemoteTmuxWindowMirror, tmuxPaneId: Int) {
         guard CloseTabWarningStore(defaults: closeTabWarningDefaults).shouldConfirmCloseIncludingSafety(
             requiresConfirmation: true, source: .tabCloseButton
@@ -11384,7 +11386,7 @@ final class Workspace: Identifiable, ObservableObject, FilePreviewTabMetadataHos
         // intentionally pinned (which hides Bonsplit's close affordance), but
         // keep this guard for force/API paths that bypass the tab chrome.
         if let panelId = panelIdFromSurfaceId(tabId),
-           (panels[panelId] as? ChiefPanel)?.isHome == true {
+           (panels[panelId] as? ChiefPanel)?.isProtectedHome == true {
             return false
         }
         if force { forceCloseTabIds.insert(tabId) }
@@ -12438,6 +12440,19 @@ final class Workspace: Identifiable, ObservableObject, FilePreviewTabMetadataHos
             for terminal in terminalPanels(projectedFromPanelID: panelID) {
                 terminal.hostedView.setVisibleInUI(false)
                 TerminalWindowPortalRegistry.hideHostedView(terminal.hostedView)
+            }
+        }
+    }
+
+    /// Forces terminal representables to reconcile their portal host after this
+    /// workspace is attached to a different window. SwiftUI can reuse the
+    /// representable identity across a cross-window move, so the destination
+    /// window may otherwise keep the old host's detached geometry and show a
+    /// blank surface until another update arrives.
+    func requestTerminalViewReattachAfterWindowMove() {
+        for panelID in panels.keys {
+            for terminal in terminalPanels(projectedFromPanelID: panelID) {
+                terminal.requestViewReattach()
             }
         }
     }
@@ -14563,7 +14578,7 @@ extension Workspace: BonsplitDelegate {
         // Pinned protects normal Bonsplit UI; this delegate guard covers
         // callers that ask the controller to close directly.
         if let panelId = panelIdFromSurfaceId(tab.id),
-           (panels[panelId] as? ChiefPanel)?.isHome == true {
+           (panels[panelId] as? ChiefPanel)?.isProtectedHome == true {
             return false
         }
         func recordPostCloseState() {
@@ -15195,7 +15210,7 @@ extension Workspace: BonsplitDelegate {
         let tabs = controller.tabs(inPane: pane)
         if tabs.contains(where: { tab in
             guard let panelId = panelIdFromSurfaceId(tab.id) else { return false }
-            return (panels[panelId] as? ChiefPanel)?.isHome == true
+            return (panels[panelId] as? ChiefPanel)?.isProtectedHome == true
         }) {
             return false
         }
